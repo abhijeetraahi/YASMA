@@ -1,5 +1,8 @@
 package example.com.yasma.data.network
 
+import example.com.yasma.data.network.model.response.CommentsResponse
+import example.com.yasma.data.network.model.response.PostsResponse
+import io.reactivex.Observable
 import retrofit2.Retrofit
 import javax.inject.Inject
 
@@ -11,23 +14,12 @@ class YasmaApiHelper @Inject constructor(retrofit: Retrofit): ApiHelper {
 
     private var mApiHelper: ApiHelper = retrofit.create<ApiHelper>(ApiHelper::class.java)
 
-    /*private lateinit var retrofit: Retrofit
+    override fun getPostData(): Observable<List<PostsResponse>> {
+        return mApiHelper.getPostData()
+    }
 
-    fun getRetrofit(): Retrofit {
-
-        if (!::retrofit.isInitialized) {
-            val builder = OkHttpClient.Builder()
-            val okHttpClient = builder.build()
-
-            retrofit = Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(okHttpClient)
-                .build()
-        }
-
-        return retrofit
-    }*/
+    override fun getCommentsData(postId: Int): Observable<List<CommentsResponse>> {
+        return mApiHelper.getCommentsData(postId)
+    }
 
 }

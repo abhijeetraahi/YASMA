@@ -8,11 +8,9 @@ import example.com.yasma.ui.base.BaseContract
 interface HomeContract {
 
     interface View: BaseContract.View{
-        fun showToast()
+        fun setNavigationItemSelectedListener()
     }
 
 
-    interface Presenter<V: View>: BaseContract.Presenter<V>{
-
-    }
+    interface Presenter<V: View>: BaseContract.Presenter<V>
 }

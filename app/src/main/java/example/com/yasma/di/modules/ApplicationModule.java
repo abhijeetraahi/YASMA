@@ -60,7 +60,6 @@ public class ApplicationModule {
                         return chain.proceed(
                                 chain.request()
                                         .newBuilder()
-                                        //.addHeader("Authorization", "Client-ID " + ImgurService.CLIENT_ID)
                                         .build());
                     }
                 })
@@ -86,7 +85,6 @@ public class ApplicationModule {
     ApiHelper getApiHelper(YasmaApiHelper apiHelper) {
         return apiHelper;
     }
-
 
     @Provides
     @Singleton

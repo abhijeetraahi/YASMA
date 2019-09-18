@@ -19,6 +19,6 @@ class HomePresenter<V : HomeContract.View>
 
     override fun onAttach(view: V) {
         super.onAttach(view)
-        view.showToast()
+        view.setNavigationItemSelectedListener()
     }
 }

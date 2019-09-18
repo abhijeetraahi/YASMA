@@ -4,6 +4,8 @@ import dagger.Component
 import example.com.yasma.di.ActivityScope
 import example.com.yasma.di.modules.ActivityModule
 import example.com.yasma.ui.home.HomeActivity
+import example.com.yasma.ui.home.fragment.comments.CommentsFragment
+import example.com.yasma.ui.home.fragment.posts.PostsFragment
 
 /**
  * Created by Abhijeet Raahi on 17/09/2019.
@@ -13,5 +15,9 @@ import example.com.yasma.ui.home.HomeActivity
 interface ActivityComponent {
 
     fun inject(homeActivity: HomeActivity)
+
+    fun inject(postsFragment: PostsFragment)
+
+    fun inject(commentsFragment: CommentsFragment)
 
 }
