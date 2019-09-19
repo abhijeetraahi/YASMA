@@ -1,34 +1,34 @@
-package example.com.yasma.ui.home.fragment.posts
+package example.com.yasma.ui.home.fragment.albums
 
 import example.com.yasma.data.DataManager
-import example.com.yasma.data.network.model.response.PostsResponse
+import example.com.yasma.data.network.model.response.AlbumsResponse
 import example.com.yasma.ui.base.BaseFragmentPresenter
 import example.com.yasma.util.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 /**
- * Created by Abhijeet Raahi on 18/09/2019.
+ * Created by Abhijeet Raahi on 19/09/2019.
  */
-class PostsPresenter<V : PostsContract.View>
+class AlbumsPresenter<V : AlbumsContract.View>
 @Inject constructor(
     dataManager: DataManager,
     schedulerProvider: SchedulerProvider,
     compositeDisposable: CompositeDisposable
 ) : BaseFragmentPresenter<V>(dataManager, schedulerProvider, compositeDisposable),
-    PostsContract.Presenter<V> {
+    AlbumsContract.Presenter<V> {
 
-    private lateinit var mResponse: List<PostsResponse>
+    private lateinit var mResponse: List<AlbumsResponse>
 
     override fun onAttach(view: V) {
         super.onAttach(view)
-        getPostsData()
+
+        getAlbumsData()
     }
 
-    override fun getPostsData() {
-
+    override fun getAlbumsData() {
         compositeDisposable.add(
-            dataManager.getPostData()
+            dataManager.getAlbumsData()
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .subscribe({ response ->
@@ -42,12 +42,11 @@ class PostsPresenter<V : PostsContract.View>
         )
     }
 
-    override fun getPostsResponse(): List<PostsResponse> {
+    override fun getAlbumsResponse(): List<AlbumsResponse> {
         return mResponse
     }
 
     override fun itemClicked(position: Int) {
-        mResponse[position].id?.let { view?.launchCommentsActivity(it) }
+        mResponse[position].id?.let { view?.launchPhotoActivity(it) }
     }
-
 }

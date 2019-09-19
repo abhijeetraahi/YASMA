@@ -1,26 +1,26 @@
-package example.com.yasma.ui.home.fragment.posts
+package example.com.yasma.ui.home.fragment.albums
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import example.com.yasma.R
-import example.com.yasma.databinding.PostsItemBinding
+import example.com.yasma.databinding.AlbumsItemBinding
 import javax.inject.Inject
 
 /**
- * Created by Abhijeet Raahi on 18/09/2019.
+ * Created by Abhijeet Raahi on 19/09/2019.
  */
-class PostsAdapter @Inject
-constructor(private val mPresenter: PostsContract.Presenter<PostsContract.View>) :
-    RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
+class AlbumsAdapter @Inject
+constructor(private val mPresenter: AlbumsContract.Presenter<AlbumsContract.View>) :
+    RecyclerView.Adapter<AlbumsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
             binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.posts_item,
+                R.layout.albums_item,
                 parent,
                 false
             )
@@ -28,14 +28,14 @@ constructor(private val mPresenter: PostsContract.Presenter<PostsContract.View>)
     }
 
     override fun getItemCount(): Int {
-        return mPresenter.getPostsResponse().size
+        return mPresenter.getAlbumsResponse().size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.model = mPresenter.getPostsResponse()[position]
+        holder.binding.model = mPresenter.getAlbumsResponse()[position]
     }
 
-    inner class ViewHolder(var binding: PostsItemBinding) :
+    inner class ViewHolder(var binding: AlbumsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         init {
@@ -44,5 +44,4 @@ constructor(private val mPresenter: PostsContract.Presenter<PostsContract.View>)
             }
         }
     }
-
 }

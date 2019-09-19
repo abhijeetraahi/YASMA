@@ -1,7 +1,6 @@
 package example.com.yasma.data.network
 
-import example.com.yasma.data.network.model.response.CommentsResponse
-import example.com.yasma.data.network.model.response.PostsResponse
+import example.com.yasma.data.network.model.response.*
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import javax.inject.Inject
@@ -20,6 +19,18 @@ class YasmaApiHelper @Inject constructor(retrofit: Retrofit): ApiHelper {
 
     override fun getCommentsData(postId: Int): Observable<List<CommentsResponse>> {
         return mApiHelper.getCommentsData(postId)
+    }
+
+    override fun getAlbumsData(): Observable<List<AlbumsResponse>> {
+        return mApiHelper.getAlbumsData()
+    }
+
+    override fun getUsersData(): Observable<List<UsersResponse>> {
+        return mApiHelper.getUsersData()
+    }
+
+    override fun getPhotosData(albumId: Int): Observable<List<PhotosResponse>> {
+        return mApiHelper.getPhotosData(albumId)
     }
 
 }

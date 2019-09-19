@@ -1,13 +1,15 @@
 package example.com.yasma.ui.base
 
+import android.content.Context
+
 /**
  * Created by Abhijeet Raahi on 18/09/2019.
  */
 interface BaseFragmentContract {
 
     interface View{
-        fun showLoadingView()
-        fun hideLoadingView()
+        fun showToast(context: Context, message: String)
+        fun showToast(context: Context, message: String, length: Int)
     }
 
     interface Presenter<V: View>{

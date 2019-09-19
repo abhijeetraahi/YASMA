@@ -10,10 +10,10 @@ import io.reactivex.disposables.CompositeDisposable
 open class BasePresenter<V : BaseContract.View> constructor(
     val dataManager: DataManager,
     val schedulerProvider: SchedulerProvider,
-    private val compositeDisposable: CompositeDisposable
+    val compositeDisposable: CompositeDisposable
 ) : BaseContract.Presenter<V> {
 
-    private var view: V? = null
+    var view: V? = null
 
     override fun onAttach(view: V) {
         this.view = view

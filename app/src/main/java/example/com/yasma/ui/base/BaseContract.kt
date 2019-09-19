@@ -6,8 +6,6 @@ package example.com.yasma.ui.base
 class BaseContract {
 
     interface View{
-        fun showLoading()
-        fun hideLoading()
         fun showToast(message: String)
         fun showToast(message: String, length: Int)
     }

@@ -1,8 +1,7 @@
 package example.com.yasma.data
 
 import example.com.yasma.data.network.ApiHelper
-import example.com.yasma.data.network.model.response.CommentsResponse
-import example.com.yasma.data.network.model.response.PostsResponse
+import example.com.yasma.data.network.model.response.*
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -20,6 +19,18 @@ class YasmaDataManager @Inject constructor(apiHelper: ApiHelper): DataManager{
 
     override fun getCommentsData(postId: Int): Observable<List<CommentsResponse>> {
         return mApiHelper.getCommentsData(postId)
+    }
+
+    override fun getAlbumsData(): Observable<List<AlbumsResponse>> {
+        return mApiHelper.getAlbumsData()
+    }
+
+    override fun getUsersData(): Observable<List<UsersResponse>> {
+        return mApiHelper.getUsersData()
+    }
+
+    override fun getPhotosData(albumId: Int): Observable<List<PhotosResponse>> {
+        return mApiHelper.getPhotosData(albumId)
     }
 
 }

@@ -1,6 +1,7 @@
 package example.com.yasma.ui.base
 
 import android.content.Context
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import example.com.yasma.di.components.ActivityComponent
 
@@ -24,13 +25,12 @@ abstract class BaseFragment: Fragment(), BaseFragmentContract.View {
         } else null
     }
 
-
-    override fun showLoadingView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showToast(context: Context, message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 
-    override fun hideLoadingView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showToast(context: Context, message: String, length: Int) {
+        Toast.makeText(context, message, length).show()
     }
 
 }

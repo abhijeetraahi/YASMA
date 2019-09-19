@@ -1,4 +1,4 @@
-package example.com.yasma.ui.home.fragment.posts
+package example.com.yasma.ui.home.fragment.users
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,26 +7,25 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import example.com.yasma.R
-import example.com.yasma.databinding.PostsFragmentBinding
+import example.com.yasma.databinding.UsersFragmentBinding
 import example.com.yasma.ui.base.BaseFragment
-import example.com.yasma.ui.comments.CommentsActivity
 import javax.inject.Inject
 
 /**
- * Created by Abhijeet Raahi on 18/09/2019.
+ * Created by Abhijeet Raahi on 19/09/2019.
  */
-class PostsFragment : BaseFragment(), PostsContract.View {
+class UsersFragment: BaseFragment(), UsersContract.View {
 
-    private lateinit var mBinding: PostsFragmentBinding
+    private lateinit var mBinding: UsersFragmentBinding
 
-    lateinit var mPresenter: PostsContract.Presenter<PostsContract.View>
+    lateinit var mPresenter: UsersContract.Presenter<UsersContract.View>
         @Inject set
 
-    lateinit var mAdapter: PostsAdapter
+    lateinit var mAdapter: UsersAdapter
         @Inject set
 
     companion object {
-        fun newInstance() = PostsFragment()
+        fun newInstance() = UsersFragment()
     }
 
     override fun onCreateView(
@@ -35,7 +34,7 @@ class PostsFragment : BaseFragment(), PostsContract.View {
         savedInstanceState: Bundle?
     ): View? {
 
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.posts_fragment, container, false)
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.users_fragment, container, false)
         getActivityComponent()?.inject(this)
 
         mPresenter.onAttach(this)
@@ -56,12 +55,8 @@ class PostsFragment : BaseFragment(), PostsContract.View {
         }
     }
 
-
     override fun hideProgressView() {
         mBinding.progressBar.visibility = View.GONE
     }
 
-    override fun launchCommentsActivity(postId: Int) {
-        startActivity(activity?.applicationContext?.let { CommentsActivity.startActivity(it, postId) })
-    }
 }
